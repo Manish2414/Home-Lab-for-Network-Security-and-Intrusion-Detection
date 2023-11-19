@@ -1,0 +1,1 @@
+alert tcp $HOME_NET any -> 192.168.100.25/24 any (msg:"POSSIBLE NMAP SYNSTEALTH SCAN DETECTED"; flow:stateless; flags:S; priority:5; threshold:type limit, track by_src, count 50, seconds 1; classtype:attempted-recon; sid:1234;)
