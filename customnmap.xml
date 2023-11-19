@@ -1,0 +1,12 @@
+<!--
+This file is used to download the customnmap.rules on the OPNsense dashboard as a custom rule for threat detection.
+-->
+
+<?xml version="1.0"?>
+<ruleset documentation_url="http://docs.opnsense.org/">
+    <location url="http://192.168.100.2/" prefix="customnmap"/>
+    <files>
+        <file description="customnmap rules">customnmap.rules</file>
+        <file description="customnmap" url="inline">alert tcp $HOME_NET any -> 192.168.100.25/24 any (msg:"POSSIBLE NMAP SYNSTEALTH SCAN DETECTED"; flow:stateless; flags:S; priority:5; threshold:type limit, track by_src, count 50, seconds 1; classtype:attempted-recon; sid:1234;)</file>
+    </files>
+</ruleset>
